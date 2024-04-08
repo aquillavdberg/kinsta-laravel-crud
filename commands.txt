@@ -1,0 +1,75 @@
+VOORBEREIDINGEN:
+- installeer xampp stack
+
+- eerst algemeen composer installeren
+
+- setup global laravel (Deze command in normale windows cmd prompt):
+composer global require "laravel/installer"
+
+
+- dan de volgende commands in de terminal van vsc:
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('sha384', 'composer-setup.php') === 'dac665fdc30fdd8ec78b38b9800061b4150413ff2e3b6f88543c636f7cd84f6db9189d43a81e5503cda447da73c7e5b6') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+
+
+
+- in xampp configuratie scherm:
+start apache
+start mysql
+
+
+
+- install phpadmin:
+git clone https://github.com/phpmyadmin/phpmyadmin.git
+composer update
+yarn install --production
+
+- als yarn nog niet bestaat:
+npm install --global yarn
+
+- als npm nog niet bestaat:
+https://nodejs.org/en/download/
+npm install -g npm
+
+- ga naar phpmyadmin:
+http://localhost/phpmyadmin
+
+- setup local project env (in terminal van vsc):
+composer create-project laravel/laravel php-laravel-project-crud
+- of in t algemeen
+composer create-project laravel/laravel - prefer -dist
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+- voor table migration:
+php artisan make:migration create_products_table
+algemeen:
+php artisan make:migration create_<table-name>_table
+php artisan migrate
+
+- to serve (the terminal will state where it is served):
+php artisan serve
+
+- create a controller
+php artisan make:controller PostController --api
+algemeen:
+php artisan make:controller <table-name>Controller
+
+- create model
+php artisan make:model Product
+algemeen:
+php artisan make:model <table-name>
+
+
+
+
+
+----------------------------------------------------------------------------------
+- to setup new laravel app (in dit geval "crudposts"):
+laravel new crudposts
